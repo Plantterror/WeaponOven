@@ -1,0 +1,3 @@
+displayName = Weapon Oven
+author = Planterror
+version = 0.1

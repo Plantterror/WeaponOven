@@ -1,0 +1,3 @@
+C:\Users\asper\Documents\My Games\Terraria\ModLoader\Mod Sources\WeaponOven\obj\Debug\net45\WeaponOven.csprojAssemblyReference.cache
+C:\Users\asper\Documents\My Games\Terraria\ModLoader\Mod Sources\WeaponOven\obj\Debug\net45\WeaponOven.AssemblyInfoInputs.cache
+C:\Users\asper\Documents\My Games\Terraria\ModLoader\Mod Sources\WeaponOven\obj\Debug\net45\WeaponOven.AssemblyInfo.cs
