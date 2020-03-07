@@ -1,6 +1,6 @@
-bin*
-obj*
-Properties*
-.git*
-.vs*
+bin\*
+obj\*
+Properties\*
+.git\*
+.vs\*
 *.csproj.user
