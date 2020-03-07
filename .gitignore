@@ -1,0 +1,7 @@
+vs/*
+.git/*
+bin/*
+debug/*
+obj/*
+.csprojuser
+.
