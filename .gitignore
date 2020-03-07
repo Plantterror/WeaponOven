@@ -1,7 +1,6 @@
-vs/*
-.git/*
-bin/*
-debug/*
-obj/*
-.csprojuser
-.
+bin*
+obj*
+Properties*
+.git*
+.vs*
+*.csproj.user
