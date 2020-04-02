@@ -29,7 +29,7 @@ namespace WeaponOven.UI
 		}
 		public override void OnInitialize()
 		{
-			UIPanel ovenpanel = new UIPanel();
+			UIPanel ovenpanel = new UIPanel(); //todo: check these values over
 			ovenpanel.Width.Set(900, 0);
 			ovenpanel.Height.Set(400, 0);
 			ovenpanel.Left.Set(200, 0);
