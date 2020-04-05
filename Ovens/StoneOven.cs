@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using static Terraria.ModLoader.ModContent;
 using WeaponOven.UI;
 
 namespace WeaponOven.Ovens
@@ -53,7 +54,6 @@ namespace WeaponOven.Ovens
 
 		public override bool NewRightClick(int i, int j)
 		{
-			
 			return true;
 		}
 		public override bool HasSmartInteract() => true;
@@ -71,7 +71,7 @@ namespace WeaponOven.Ovens
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			//todo: check for item in ui slot, then drop that item
-			//todo: drop a single oven
+			Item.NewItem(i * 16, j * 16, 48, 32, ItemType<StoneOvenItem>());
 		}
 	}
 }
