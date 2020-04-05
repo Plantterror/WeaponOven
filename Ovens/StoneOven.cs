@@ -53,6 +53,7 @@ namespace WeaponOven.Ovens
 
 		public override bool NewRightClick(int i, int j)
 		{
+			
 			return true;
 		}
 		public override bool HasSmartInteract() => true;
