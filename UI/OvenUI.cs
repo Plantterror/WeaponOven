@@ -19,11 +19,11 @@ namespace WeaponOven.UI
 		{
 
 		}
-		internal void GenerateNewUI() //Opening a new state of the oven
+		internal static void GenerateNewUI() //Opening a new state of the oven
 		{
 			WeaponOven.instance.Interface.SetState(WeaponOven.instance.ovenUI);
 		}
-		internal void CloseUI() //closing that state
+		internal static void CloseUI() //closing that state
 		{
 			WeaponOven.instance.Interface.SetState(null);
 		}

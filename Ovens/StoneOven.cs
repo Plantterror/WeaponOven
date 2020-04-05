@@ -51,9 +51,9 @@ namespace WeaponOven.Ovens
 	}
 	public class StoneOvenTile : ModTile
 	{
-
 		public override bool NewRightClick(int i, int j)
 		{
+			OvenUI.GenerateNewUI();
 			return true;
 		}
 		public override bool HasSmartInteract() => true;

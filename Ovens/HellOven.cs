@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using WeaponOven.UI;
 using static Terraria.ModLoader.ModContent;
 
 namespace WeaponOven.Ovens
@@ -43,7 +44,11 @@ namespace WeaponOven.Ovens
 	}
 	public class HellOvenTile : ModTile
 	{
-		public override bool NewRightClick(int i, int j) => throw new NotImplementedException();
+		public override bool NewRightClick(int i, int j)
+		{
+			OvenUI.GenerateNewUI();
+			return true;
+		}
 		public override bool HasSmartInteract() => true;
 		public override void SetDefaults()
 		{
