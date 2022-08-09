@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using WeaponOven.Ovens.Tiles;
 
-namespace WeaponOven
+namespace WeaponOven.Ovens.Items
 {
 	public class StoneOven : ModItem
 	{
@@ -22,6 +23,12 @@ namespace WeaponOven
 			Item.height = 20;
 			Item.maxStack = 99;
 			Item.rare = ItemRarityID.Blue;
+			Item.consumable = true;
+			Item.useTime = 10;
+			Item.autoReuse = true;
+			Item.useStyle = ItemUseStyleID.Swing;
+			Item.useTurn = true;
+			Item.useAnimation = 15;
 			Item.createTile = ModContent.TileType<StoneOvenTile>();
 		}
 		public override void AddRecipes()
