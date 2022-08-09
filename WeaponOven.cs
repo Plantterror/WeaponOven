@@ -4,5 +4,6 @@ namespace WeaponOven
 {
 	public class WeaponOven : Mod
 	{
+
 	}
 }
