@@ -22,6 +22,7 @@ namespace WeaponOven
 			Item.height = 20;
 			Item.maxStack = 99;
 			Item.rare = ItemRarityID.Pink;
+			Item.createTile = ModContent.TileType<HallowedOvenTile>();
 		}
 		public override void AddRecipes()
 		{

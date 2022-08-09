@@ -22,6 +22,7 @@ namespace WeaponOven
 			Item.height = 20;
 			Item.maxStack = 99;
 			Item.rare = ItemRarityID.Lime;
+			Item.createTile = ModContent.TileType<ChloroOvenTile>();
 		}
 		public override void AddRecipes()
 		{
