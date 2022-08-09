@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace WeaponOven
 {
-	public class Lunar : ModItem
+	public class LunarOven : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -21,7 +21,7 @@ namespace WeaponOven
 			Item.width = 20;
 			Item.height = 20;
 			Item.maxStack = 99;
-			Item.rare = ItemRarityID.Blue;
+			Item.rare = ItemRarityID.Red;
 		}
 		public override void AddRecipes()
 		{

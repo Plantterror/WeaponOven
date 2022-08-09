@@ -21,7 +21,7 @@ namespace WeaponOven
 			Item.width = 20;
 			Item.height = 20;
 			Item.maxStack = 99;
-			Item.rare = ItemRarityID.Blue;
+			Item.rare = ItemRarityID.Pink;
 		}
 		public override void AddRecipes()
 		{
