@@ -17,10 +17,6 @@ namespace WeaponOven.Ovens.Tiles
 {
 	public class StoneOvenTile : ModTile
 	{
-		public override void SetStaticDefaults()
-		{
-			
-		}
 		public override void PostSetDefaults()
 		{
 			Main.tileSolid[Type] = false; //tile can be moved through

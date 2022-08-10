@@ -23,14 +23,20 @@ namespace WeaponOven.UI
 			panel.Left.Set(65f, 0f);
 			panel.Top.Set(290f, 0f);
 			panel.Width.Set(375, 0);
-			panel.Height.Set(200, 0);
+			panel.Height.Set(150, 0);
 			panel.BackgroundColor = new Color(73, 94, 171);
 
-			UIText text = new UIText("testing");
+			var text = new UIText("testing");
 			text.HAlign = 0.5f;
-			text.VAlign = 0.2f;
+			text.VAlign = 0.25f;
 			panel.Append(text);
 
+			var VanillaItemSlot = new VanillaItemSlotWrapper(ItemSlot.Context.BankItem, 0.85f)
+			{
+				Left = { Pixels = 170 },
+				Top = { Pixels = 90 }
+			};
+			panel.Append(VanillaItemSlot);
 			Append(panel);
 		}
 		public override void Update(GameTime gameTime)
