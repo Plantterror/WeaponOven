@@ -3,6 +3,7 @@ using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
+using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -20,6 +21,7 @@ namespace WeaponOven.Ovens.Tiles
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
 			Main.tileFrameImportant[Type] = true;
+			TileID.Sets.DisableSmartCursor[Type] = true;
 			//set boundaries of the tile when placing
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.StyleHorizontal = true;
@@ -47,6 +49,10 @@ namespace WeaponOven.Ovens.Tiles
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 32, ModContent.ItemType<HallowedOven>());
+		}
+		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
+		{
+			return true;
 		}
 	}
 }
