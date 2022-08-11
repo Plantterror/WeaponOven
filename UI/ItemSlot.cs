@@ -20,7 +20,7 @@ namespace WeaponOven.UI
 		private readonly float _scale;
 		internal Func<Item, bool> ValidItemFunc;
 
-		public Texture2D backgroundTexture => TextureAssets.InventoryBack9.Value;
+		public static Texture2D BackgroundTexture => TextureAssets.InventoryBack9.Value;
 		public VanillaItemSlotWrapper(int context = ItemSlot.Context.BankItem, float scale = 1f)
 		{
 			_context = context;
@@ -28,8 +28,8 @@ namespace WeaponOven.UI
 			Item = new Item();
 			Item.SetDefaults(0);
 
-			Width.Set(backgroundTexture.Width * scale, 0f);
-			Height.Set(backgroundTexture.Height * scale, 0f);
+			Width.Set(BackgroundTexture.Width * scale, 0f);
+			Height.Set(BackgroundTexture.Height * scale, 0f);
 		}
 
 		protected override void DrawSelf(SpriteBatch spriteBatch)

@@ -12,17 +12,7 @@ namespace WeaponOven
 {
 	public class WeaponOven : Mod
 	{
-		internal static WeaponOven instance;
-		
-		public override void Load()
-		{
-			instance = this;
-		}
-		public override void Unload()
-		{
-			instance = null;
-		}
-		
+
 	}
 	class OvenUISystem : ModSystem
 	{
@@ -76,7 +66,7 @@ namespace WeaponOven
 					   InterfaceScaleType.UI));
 			}
 		}
-		internal void SetUI(bool open)
+		internal static void SetUI(bool open)
 		{
 			if (open == true)
 			{

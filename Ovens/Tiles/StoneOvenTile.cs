@@ -86,17 +86,17 @@ namespace WeaponOven.Ovens.Tiles
 					Main.npcChatCornerItem = 0;
 					Main.npcChatText = string.Empty;
 				}
-				bool hadChestOpen = player.chest != -1;
 				player.chest = -1;
 				Main.stackSplit = 600;
 
 
 				OhNoThePlayerIsInTheOven.LocalPlayer.timeSinceOpen = 0;
-				OvenUISystem.Instance.SetUI(true);
+				OvenUISystem.SetUI(true);
 			}
 			else
 			{
-				OvenUISystem.Instance.SetUI(false);
+				//close the UI since the player is already in the ui and clicked on it
+				OvenUISystem.SetUI(false);
 
 			}
 			return true;
@@ -118,7 +118,7 @@ namespace WeaponOven.Ovens.Tiles
 					   || PlayerPos.Y - j > 6
 					   || PlayerPos.Y - j < -6)
 					{//...close the UI
-						OvenUISystem.Instance.SetUI(false);
+						OvenUISystem.SetUI(false);
 					}
 				if (OhNoThePlayerIsInTheOven.LocalPlayer.timeSinceOpen < 1)
 				{
@@ -129,7 +129,7 @@ namespace WeaponOven.Ovens.Tiles
 
 				if (OhNoThePlayerIsInTheOven.LocalPlayer.Player.chest != -1 || !Main.playerInventory || OhNoThePlayerIsInTheOven.LocalPlayer.Player.sign > -1 || OhNoThePlayerIsInTheOven.LocalPlayer.Player.talkNPC > -1)
 				{
-					OvenUISystem.Instance.SetUI(false);
+					OvenUISystem.SetUI(false);
 					Recipe.FindRecipes();
 				}
 			}
