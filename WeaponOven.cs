@@ -29,10 +29,10 @@ namespace WeaponOven
 		internal UserInterface oveninterface;
 		internal OvenInterface ovenUI;
 		internal 
-		static OvenUISystem instance { get; private set; }
+		static OvenUISystem Instance { get; private set; }
 		public override void Load()
 		{
-			instance=this;
+			Instance=this;
 			if (!Main.dedServ)
 			{
 				oveninterface = new UserInterface();
@@ -44,7 +44,7 @@ namespace WeaponOven
 
 		public override void Unload()
 		{
-			instance = null;
+			Instance = null;
 			oveninterface = null;
 			ovenUI = null;
 		}
@@ -53,9 +53,9 @@ namespace WeaponOven
 		public override void UpdateUI(GameTime gameTime)
 		{
 			_lastUpdateUiGameTime = gameTime;
-			if (instance.oveninterface?.CurrentState != null)
+			if (Instance.oveninterface?.CurrentState != null)
 			{
-				instance.oveninterface.Update(gameTime);
+				Instance.oveninterface.Update(gameTime);
 			}
 		}
 		public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
@@ -67,9 +67,9 @@ namespace WeaponOven
 					"WeaponOven: OvenUI",
 					delegate
 					{
-						if (_lastUpdateUiGameTime != null && instance.oveninterface?.CurrentState != null)
+						if (_lastUpdateUiGameTime != null && Instance.oveninterface?.CurrentState != null)
 						{
-							instance.oveninterface.Draw(Main.spriteBatch, _lastUpdateUiGameTime);
+							Instance.oveninterface.Draw(Main.spriteBatch, _lastUpdateUiGameTime);
 						}
 						return true;
 					},
@@ -81,12 +81,12 @@ namespace WeaponOven
 			if (open == true)
 			{
 				Main.playerInventory = true;
-				instance.oveninterface.SetState(instance.ovenUI);
+				Instance.oveninterface.SetState(Instance.ovenUI);
 				SoundEngine.PlaySound(SoundID.MenuOpen);
 			}
 			else
 			{
-				instance.oveninterface.SetState(null);
+				Instance.oveninterface.SetState(null);
 				SoundEngine.PlaySound(SoundID.MenuClose);
 			}
 		}

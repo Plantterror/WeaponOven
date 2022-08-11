@@ -26,9 +26,11 @@ namespace WeaponOven.UI
 			panel.Height.Set(150, 0);
 			panel.BackgroundColor = new Color(73, 94, 171);
 
-			var text = new UIText("testing");
-			text.HAlign = 0.5f;
-			text.VAlign = 0.25f;
+			var text = new UIText("testing")
+			{
+				HAlign = 0.5f,
+				VAlign = 0.25f
+			};
 			panel.Append(text);
 
 			var VanillaItemSlot = new VanillaItemSlotWrapper(ItemSlot.Context.BankItem, 0.85f)
@@ -38,22 +40,6 @@ namespace WeaponOven.UI
 			};
 			panel.Append(VanillaItemSlot);
 			Append(panel);
-		}
-		public override void Update(GameTime gameTime)
-		{
-			if (!Main.playerInventory)
-			{
-				OvenUISystem.instance.SetUI(false);
-			}
-			base.Update(gameTime);
-		}
-		protected override void DrawSelf(SpriteBatch spriteBatch)
-		{
-			base.DrawSelf(spriteBatch);
-		}
-		public override void Draw(SpriteBatch spriteBatch)
-		{
-			base.Draw(spriteBatch);
 		}
 	}
 }

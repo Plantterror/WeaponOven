@@ -56,7 +56,7 @@ namespace WeaponOven.Ovens.Tiles
 			Player player = Main.LocalPlayer;
 			Tile tile = Main.tile[i, j];
 			//Is the player already in the oven UI?
-			if (OvenUISystem.instance.oveninterface.CurrentState == null) 
+			if (OvenUISystem.Instance.oveninterface.CurrentState == null) 
 			{
 				Main.mouseRightRelease = false;
 				base.RightClick(i, j);
@@ -90,9 +90,15 @@ namespace WeaponOven.Ovens.Tiles
 				player.chest = -1;
 				Main.stackSplit = 600;
 
-				OvenUISystem.instance.SetUI(true);
-			}
 
+				OhNoThePlayerIsInTheOven.LocalPlayer.timeSinceOpen = 0;
+				OvenUISystem.Instance.SetUI(true);
+			}
+			else
+			{
+				OvenUISystem.Instance.SetUI(false);
+
+			}
 			return true;
 		}
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
@@ -101,9 +107,9 @@ namespace WeaponOven.Ovens.Tiles
 		}
 		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 		{
-			if(OvenUISystem.instance.oveninterface.CurrentState != null)
+			if(OvenUISystem.Instance.oveninterface.CurrentState != null)
 			{
-				{
+				
 					//lookup player coordinates
 					var PlayerPos = Main.LocalPlayer.position.ToTileCoordinates();
 					//if the player walks away from the oven...
@@ -112,8 +118,19 @@ namespace WeaponOven.Ovens.Tiles
 					   || PlayerPos.Y - j > 6
 					   || PlayerPos.Y - j < -6)
 					{//...close the UI
-						OvenUISystem.instance.SetUI(false);
+						OvenUISystem.Instance.SetUI(false);
 					}
+				if (OhNoThePlayerIsInTheOven.LocalPlayer.timeSinceOpen < 1)
+				{
+					OhNoThePlayerIsInTheOven.LocalPlayer.Player.SetTalkNPC(-1);
+					Main.playerInventory = true;
+					OhNoThePlayerIsInTheOven.LocalPlayer.timeSinceOpen++;
+				}
+
+				if (OhNoThePlayerIsInTheOven.LocalPlayer.Player.chest != -1 || !Main.playerInventory || OhNoThePlayerIsInTheOven.LocalPlayer.Player.sign > -1 || OhNoThePlayerIsInTheOven.LocalPlayer.Player.talkNPC > -1)
+				{
+					OvenUISystem.Instance.SetUI(false);
+					Recipe.FindRecipes();
 				}
 			}
 		}
