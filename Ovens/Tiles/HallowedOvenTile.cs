@@ -27,7 +27,7 @@ namespace WeaponOven.Ovens.Tiles
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
 			TileObjectData.addTile(Type);
-			//displaying the name on the map and it's colour
+			//displaying the name on the map and its colour
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Hallowed Oven");
 			AddMapEntry(new Color(195, 195, 195), name);
