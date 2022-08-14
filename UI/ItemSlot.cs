@@ -13,7 +13,7 @@ using Terraria.GameInput;
 
 namespace WeaponOven.UI
 {
-	internal class VanillaItemSlotWrapper : UIElement
+	internal class VanillaItemSlotWrapper : UIElement //Stolen class from old examplemod code, adjusted slightly to work with 1.4.
 	{
 		internal Item Item;
 		private readonly int _context;

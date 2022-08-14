@@ -20,8 +20,8 @@ namespace WeaponOven.Ovens.Tiles
 		public override void PostSetDefaults()
 		{
 			Main.tileSolid[Type] = false; //tile can be moved through
-			Main.tileNoAttach[Type] = true; 
-			Main.tileLavaDeath[Type] = true;
+			Main.tileNoAttach[Type] = true;  //tile does not attach to other blocks like dirt
+			Main.tileLavaDeath[Type] = true; //tile dies by lava
 			Main.tileFrameImportant[Type] = true; //frameimportants are usually furniture
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			//set boundaries of the tile when placing
@@ -45,11 +45,10 @@ namespace WeaponOven.Ovens.Tiles
 				frameCounter = 0;
 				frame = ++frame % 4;
 			}
-			
 		}
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 32, ModContent.ItemType<StoneOven>());
+			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 32, ModContent.ItemType<StoneOven>()); //break all the tiles linked to the oven.
 		}
 		public override bool RightClick(int i, int j)
 		{
@@ -95,7 +94,7 @@ namespace WeaponOven.Ovens.Tiles
 			}
 			else
 			{
-				//close the UI since the player is already in the ui and clicked on it
+				//close the UI since the player is already in the ui and clicked on the tile again
 				OvenUISystem.SetUI(false);
 
 			}
@@ -128,11 +127,19 @@ namespace WeaponOven.Ovens.Tiles
 				}
 
 				if (OhNoThePlayerIsInTheOven.LocalPlayer.Player.chest != -1 || !Main.playerInventory || OhNoThePlayerIsInTheOven.LocalPlayer.Player.sign > -1 || OhNoThePlayerIsInTheOven.LocalPlayer.Player.talkNPC > -1)
-				{
+				{ //If the player is in a chest, closes the inventory, enters a sign, or talks to an npc, close the UI.
 					OvenUISystem.SetUI(false);
 					Recipe.FindRecipes();
-				}
+				}//TODO: close when other modded UIs open up?
 			}
+		}
+	}
+	public class StoneOvenTE : ModTileEntity
+	{
+		public override bool IsTileValidForEntity(int x, int y)
+		{
+			Tile tile = Main.tile[x, y];
+			return tile.TileType == ModContent.TileType<StoneOvenTile>() && tile.HasTile;//TODO: hastile might not be the replacement for active, look into that
 		}
 	}
 }
