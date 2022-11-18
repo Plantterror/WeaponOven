@@ -66,6 +66,10 @@ namespace WeaponOven
 					   InterfaceScaleType.UI));
 			}
 		}
+		/// <summary>
+		/// Method for controlling the opening and closing of the oven UI
+		/// </summary>
+		/// <param name="open">Whether the UI should be opened or closed.</param>
 		internal static void SetUI(bool open)
 		{
 			if (open == true)
