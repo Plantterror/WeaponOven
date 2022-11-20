@@ -1,1 +1,1 @@
-Weapon Oven is a pretty cool mod, it does...this. Modify this file with a description of your mod.
+WeaponOven allows you to cook your weapons. That's it, really.
