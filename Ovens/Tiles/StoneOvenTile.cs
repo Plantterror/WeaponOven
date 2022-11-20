@@ -53,9 +53,14 @@ namespace WeaponOven.Ovens.Tiles
 		public override bool RightClick(int i, int j)
 		{
 			Player player = Main.LocalPlayer;
-			Tile tile = Main.tile[i, j];
 			//Is the player already in the oven UI?
-			if (OvenUISystem.Instance.oveninterface.CurrentState == null) 
+			if (OvenUISystem.Instance.oveninterface.CurrentState == OvenUISystem.Instance.ovenUI)
+			{
+				//close the UI since the player is already in the ui and clicked on the tile again
+				OvenUISystem.SetUI(false);
+
+			}
+			else
 			{
 				Main.mouseRightRelease = false;
 				base.RightClick(i, j);
@@ -92,12 +97,6 @@ namespace WeaponOven.Ovens.Tiles
 				OhNoThePlayerIsInTheOven.LocalPlayer.timeSinceOpen = 0;
 				OvenUISystem.SetUI(true);
 			}
-			else
-			{
-				//close the UI since the player is already in the ui and clicked on the tile again
-				OvenUISystem.SetUI(false);
-
-			}
 			return true;
 		}
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
@@ -112,10 +111,7 @@ namespace WeaponOven.Ovens.Tiles
 					//lookup player coordinates
 					var PlayerPos = Main.LocalPlayer.position.ToTileCoordinates();
 					//if the player walks away from the oven...
-					if (PlayerPos.X - i > 7
-					   || PlayerPos.X - i < -7
-					   || PlayerPos.Y - j > 6
-					   || PlayerPos.Y - j < -6)
+					if (PlayerPos.X - i > Player.tileRangeX || i - PlayerPos.X < -Player.tileRangeX || PlayerPos.Y - j > Player.tileRangeY || j - PlayerPos.Y > Player.tileRangeY)
 					{//...close the UI
 						OvenUISystem.SetUI(false);
 					}
