@@ -129,12 +129,4 @@ namespace WeaponOven.Ovens.Tiles
 			}
 		}
 	}
-	public class StoneOvenTE : ModTileEntity
-	{
-		public override bool IsTileValidForEntity(int x, int y)
-		{
-			Tile tile = Main.tile[x, y];
-			return tile.TileType == ModContent.TileType<StoneOvenTile>() && tile.HasTile;//TODO: hastile might not be the replacement for active, look into that
-		}
-	}
 }
