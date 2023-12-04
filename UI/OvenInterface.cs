@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
+using Terraria.ModLoader;
+using Terraria.GameContent;
+using Terraria.GameInput;
 using WeaponOven;
 using WeaponOven.Ovens.Tiles;
 
@@ -34,12 +37,23 @@ namespace WeaponOven.UI
 			};
 			panel.Append(text);
 			//setup the item slot used to store the cooked weapon
-			var VanillaItemSlot = new VanillaItemSlotWrapper(ItemSlot.Context.BankItem, 0.85f)
-			{
-				Left = { Pixels = 170 },
-				Top = { Pixels = 90 }
-			};
-			panel.Append(VanillaItemSlot);
+			Item item = new Item();
+			item.TurnToAir();
+			/*
+			UIItemSlot uiItemSlot = new(new Item[1] {item}, 0, ItemSlot.Context.BankItem);
+			uiItemSlot.Left.Set(160f, 0f);
+			uiItemSlot.Top.Set(70f,0f);
+			uiItemSlot.Width.Set(TextureAssets.InventoryBack9.Value.Width,0f);
+			uiItemSlot.Height.Set(TextureAssets.InventoryBack9.Value.Height,0f);
+			panel.Append(uiItemSlot);*/
+
+			UIItemSlots itemSlots = new(new ItemSlot(), TextureAssets.InventoryBack9, Color.Red);
+			itemSlots.Left.Set(160f, 0f);
+			itemSlots.Top.Set(70f,0f);
+			itemSlots.Width.Set(TextureAssets.InventoryBack9.Value.Width,0f);
+			itemSlots.Height.Set(TextureAssets.InventoryBack9.Value.Height,0f);
+			panel.Append(itemSlots);
+
 			Append(panel);
 		}
 	}

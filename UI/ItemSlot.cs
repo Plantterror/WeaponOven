@@ -1,55 +1,79 @@
-﻿using System;
+using Ionic.Zlib;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.UI;
 using Terraria;
-using Terraria.ModLoader;
-using Terraria.GameContent;
-using Terraria.GameInput;
+using Terraria.ModLoader.IO;
 
 namespace WeaponOven.UI
 {
-	internal class VanillaItemSlotWrapper : UIElement //Stolen class from old examplemod code, adjusted slightly to work with 1.4.
-	{
-		internal Item Item;
-		private readonly int _context;
-		private readonly float _scale;
-		internal Func<Item, bool> ValidItemFunc;
+    public class ItemSlot : TagSerializable
+    {
+        public static readonly Func<TagCompound, ItemSlot> DESERIALIZER = LoadData;
 
-		public static Texture2D BackgroundTexture => TextureAssets.InventoryBack9.Value;
-		public VanillaItemSlotWrapper(int context = ItemSlot.Context.BankItem, float scale = 1f)
-		{
-			_context = context;
-			_scale = scale;
-			Item = new Item();
-			Item.SetDefaults(0);
+        public Item item;
 
-			Width.Set(BackgroundTexture.Width * scale, 0f);
-			Height.Set(BackgroundTexture.Height * scale, 0f);
-		}
+        public ItemSlot()
+        {
+            item = new Item();
+            item.TurnToAir();
+        }
 
-		protected override void DrawSelf(SpriteBatch spriteBatch)
-		{
-			float oldScale = Main.inventoryScale;
-			Main.inventoryScale = _scale;
-			Rectangle rectangle = GetDimensions().ToRectangle();
+        public ItemSlot(Item item)
+        {
+            this.item = item;
+        }
 
-			if (ContainsPoint(Main.MouseScreen) && !PlayerInput.IgnoreMouseInterface)
-			{
-				Main.LocalPlayer.mouseInterface = true;
-				if (ValidItemFunc == null || ValidItemFunc(Main.mouseItem))
-				{
-					// Handle handles all the click and hover actions based on the context.
-					ItemSlot.Handle(ref Item, _context);
-				}
-			}
-			// Draw draws the slot itself and Item. Depending on context, the color will change, as will drawing other things like stack counts.
-			ItemSlot.Draw(spriteBatch, ref Item, _context, rectangle.TopLeft());
-			Main.inventoryScale = oldScale;
-		}
-	}
+        public TagCompound SerializeData() => new TagCompound { [nameof(item)] = item };
+
+        public static ItemSlot Load(TagCompound tag)
+        {
+            var itemSlot = new ItemSlot();
+            itemSlot.item = tag.Get<Item>(nameof(item));
+            return itemSlot;
+        }
+
+        public void Swap(Ref<Item> otherItem)
+        {
+            Terraria.Utils.Swap<Item>(ref item, ref otherItem.Value);
+        }
+
+        public void RemoveIndividual(Ref<Item> otherItem)
+        {
+            var other = otherItem.Value;
+
+            if (other.type != item.type)
+            {
+                return;
+            }
+
+            if (item.stack <= 0)
+            {
+                item.TurnToAir();
+            }
+
+            item.stack--;
+            other.stack++;
+        }
+
+        public void WriteData(BinaryWriter writer)
+        {
+            ItemIO.Send(item, writer, true);
+        }
+
+        public void ReadData(BinaryReader reader)
+        {
+            item = ItemIO.Receive(reader);
+        }
+
+        public static ItemSlot LoadData(TagCompound tag)
+        {
+            var data = new ItemSlot();
+            data.item = tag.Get<Item>(nameof(item));
+            return data;
+        }
+    }
 }
