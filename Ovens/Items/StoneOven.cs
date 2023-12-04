@@ -14,8 +14,8 @@ namespace WeaponOven.Ovens.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stone Oven");
-			Tooltip.SetDefault("Used to cook weapons and accessories\nRight click to open the GUI");
+			// DisplayName.SetDefault("Stone Oven");
+			// Tooltip.SetDefault("Used to cook weapons and accessories\nRight click to open the GUI");
 		}
 		public override void SetDefaults()
 		{

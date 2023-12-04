@@ -14,8 +14,8 @@ namespace WeaponOven.Ovens.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lunar Oven");
-			Tooltip.SetDefault("Used to cook weapons and accessories\nRight click to open the GUI\nCooks 5x faster than a normal oven!\n'Too much? Too bad.'");
+			// DisplayName.SetDefault("Lunar Oven");
+			// Tooltip.SetDefault("Used to cook weapons and accessories\nRight click to open the GUI\nCooks 5x faster than a normal oven!\n'Too much? Too bad.'");
 		}
 		public override void SetDefaults()
 		{

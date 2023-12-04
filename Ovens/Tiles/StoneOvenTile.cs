@@ -30,8 +30,8 @@ namespace WeaponOven.Ovens.Tiles
 			TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
 			TileObjectData.addTile(Type);
 			//displaying the name on the map and its colour
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Stone Oven");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Stone Oven");
 			AddMapEntry(new Color(100, 100, 100), name);
 			//height of each frame in the sprite
 			AnimationFrameHeight = 36;

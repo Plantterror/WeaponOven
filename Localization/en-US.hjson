@@ -1,0 +1,63 @@
+Mods: {
+	WeaponOven: {
+		Items: {
+			ChloroOven: {
+				DisplayName: Chlorophyte Oven
+				Tooltip:
+					'''
+					Used to cook weapons and accessories
+					Right click to open the GUI
+					Cooks 3x faster than a normal oven!
+					'''
+			}
+
+			HallowedOven: {
+				DisplayName: Hallowed Oven
+				Tooltip:
+					'''
+					Used to cook weapons and accessories
+					Right click to open the GUI
+					Cooks 2x faster than a normal oven!
+					'''
+			}
+
+			HellOven: {
+				DisplayName: Hellstone Oven
+				Tooltip:
+					'''
+					Used to cook weapons and accessories
+					Right click to open the GUI
+					Cooks 1.5x faster than a normal oven!
+					'''
+			}
+
+			LunarOven: {
+				DisplayName: Lunar Oven
+				Tooltip:
+					'''
+					Used to cook weapons and accessories
+					Right click to open the GUI
+					Cooks 5x faster than a normal oven!
+					'Too much? Too bad.'
+					'''
+			}
+
+			StoneOven: {
+				DisplayName: Stone Oven
+				Tooltip:
+					'''
+					Used to cook weapons and accessories
+					Right click to open the GUI
+					'''
+			}
+		}
+
+		Tiles: {
+			ChloroOvenTile.MapEntry: Chlorophyte Oven
+			HallowedOvenTile.MapEntry: Hallowed Oven
+			HellOvenTile.MapEntry: Hellstone Oven
+			LunarOvenTile.MapEntry: Lunar Oven
+			StoneOvenTile.MapEntry: Stone Oven
+		}
+	}
+}

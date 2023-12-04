@@ -28,8 +28,8 @@ namespace WeaponOven.Ovens.Tiles
 			TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
 			TileObjectData.addTile(Type);
 			//displaying the name on the map and its colour
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Lunar Oven");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Lunar Oven");
 			AddMapEntry(new Color(128, 85, 0), name);
 			//animation frame stuff used later in code
 			AnimationFrameHeight = 36;

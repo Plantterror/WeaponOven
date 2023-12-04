@@ -14,8 +14,8 @@ namespace WeaponOven.Ovens.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hallowed Oven");
-			Tooltip.SetDefault("Used to cook weapons and accessories\nRight click to open the GUI\nCooks 2x faster than a normal oven!");
+			// DisplayName.SetDefault("Hallowed Oven");
+			// Tooltip.SetDefault("Used to cook weapons and accessories\nRight click to open the GUI\nCooks 2x faster than a normal oven!");
 		}
 		public override void SetDefaults()
 		{
