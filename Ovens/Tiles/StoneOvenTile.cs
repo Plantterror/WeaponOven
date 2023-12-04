@@ -46,10 +46,6 @@ namespace WeaponOven.Ovens.Tiles
 				frame = ++frame % 4;
 			}
 		}
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 32, ModContent.ItemType<StoneOven>()); //break all the tiles linked to the oven.
-		}
 		public override bool RightClick(int i, int j)
 		{
 			Player player = Main.LocalPlayer;
@@ -111,7 +107,10 @@ namespace WeaponOven.Ovens.Tiles
 					//lookup player coordinates
 					var PlayerPos = Main.LocalPlayer.position.ToTileCoordinates();
 					//if the player walks away from the oven...
-					if (PlayerPos.X - i > Player.tileRangeX || i - PlayerPos.X < -Player.tileRangeX || PlayerPos.Y - j > Player.tileRangeY || j - PlayerPos.Y > Player.tileRangeY)
+					if (PlayerPos.X - i + 1 > Player.tileRangeX //too far right
+					|| i - PlayerPos.X - 1 > Player.tileRangeX //too far left
+					|| PlayerPos.Y - j - 1 > Player.tileRangeY //too far down
+					|| j - PlayerPos.Y + 1 > Player.tileRangeY) //too far up
 					{//...close the UI
 						OvenUISystem.SetUI(false);
 					}
